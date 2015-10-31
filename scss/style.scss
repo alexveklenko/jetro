@@ -2,108 +2,221 @@
 @import "foundation.scss";
 @import "fonts";
 
-// body {
-// 	background-image: url(../img/background.png);
-// }
+body {
+	overflow-x: hidden;
+}
+// begin header
 .top-bar {
 	.name {
 		h1 {
 			a {
 				color: $primary-color;
 				padding: 0;
+				line-height: rem-calc(88);
+				span {
+					color: #F1B09B;
+				}
 			}
 		}
+	}
+	.toggle-topbar.menu-icon a {
+		margin-right: -18px;
 	}
 }
 .top-bar-section {
-	.right {
-		li {
-			&:first-child {
-				padding-left: 0;
+	@media #{$medium-up} {
+		li:not(.has-form),
+		li.active:not(.has-form) {
+			&:last-child a:not(.button){
+				padding-right: 0;
+			}
+			a:not(.button) {
+				height: $topbar-height;
+				line-height: rem-calc(90);
+				padding: rem-calc(0 14);
+				font-size: rem-calc(16);
 			}
 		}
 	}
 }
-.ba-features__title {
+
+// end header
+// begin ba-slider
+.ba-wide-line {
+	position: relative;
+	&:before,
 	&:after {
+		position: absolute;
 		content: "";
-		display: table;
-		clear: both;
+		display: block;
+		height: 60px;
+		background: rgba(232, 96, 60, .5);
+		width: 256%;
+		top: 0;
 	}
-	h2 {
-		padding-left: 80px;
+	&:before {
+		right: 100%;
 	}
-	img {
-		float:left;
-		margin-left: 10px;
+	&:after {
+		left: 100%;
+	}
+}
+.ba-slide {
+	&__title {
+		color: #FFF;
+		margin: rem-calc(0 0 15);
+		@media #{$small-only} {
+			margin: 0;
+		}
+	}
+	&__description {
+		font-size: 12px;
+	}
+	&__caption {
+		max-width: 415px;
+		padding: rem-calc(22);
+		margin: rem-calc(35);
+		:last-child {
+			margin-bottom: 0;
+		}
+		@media #{$small-only} {
+			margin: 0;
+			max-width: 100%;
+			p {
+				display: none;
+			}
+
+		}
+	}
+}
+.ba-slider__thumbnails {
+	padding: 20px 0;
+}
+// end ba-slider
+// begin ba-features
+
+.ba-features {
+	padding-top: 20px;
+	&__title {
+		margin-bottom: 22px;
+		h2 {
+			padding-left: 80px;
+		}
+		img {
+			float:left;
+			margin-left: 10px;
+		}
+		:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
 	}
 	.button {
-		padding: 10px 15px;
+		padding: 10px 15px 8px;
+		font-size: 12px;
 	}
 }
-.button {
-	padding: 10px 15px 10px 15px;
-	font-size: 12px;
-
-}
-.ba-works__title {
-	background-image: url(../img/line.png);
-	background-repeat: repeat-x;
-	h2 {
+// end ba-features
+// begin ba-works
+.ba-works {
+	&__headline {
+		background: url(../img/line.png);
+		background-repeat: repeat-x;
+		margin: 20px 0;
+	}
+	span {
 		display: inline-block;
-		background: #FFF;
+		background: url(../img/background.jpg);
 		margin: 0;
 		padding-right: 20px;
+
 	}
-}
-.ba-works__item {
-	border: 1px solid #dcdcdc;
-	margin-bottom: 20px;
-	h3 {
-		color: #b9b9b9;
-		margin: 10px;
+	&__item {
+		margin-bottom: 20px;
+		img {
+			width: 100%;
+		}
 	}
-	p {
+	&__body {
+		border: 1px solid #dcdcdc;
+		border-top: none;
+		padding: 15px;
+	}
+	&__title {
+		margin-top: 0;
+		a {
+			color: #b9b9b9;
+			&:hover{
+				color: $primary-color;
+			}
+
+		}
+	}
+	&__date {
+		margin-bottom: 0;
 		color: $primary-color;
 		font-family: $header-font-family;
 		font-size: 11px;
-		margin: 10px;
 	}
-	a {
-		display: block;
-		transition:  opacity .3s ease-in;
-		&:hover {
-			opacity: .6;
+}
+// end ba-works
+// begin ba-footer
+.ba-footer {
+	.ba-wide-line {
+		&:after,
+		&:before {
+			height: 100%;
 		}
 	}
-	img {
-		display: block;
-		width: 100%;
-	}
-}
-.ba-footer {
-	color: #FFF;
-	font-size: 12px;
-	background: #FFB39D;
-	.row {
-		background: $primary-color;
-		padding: 35px;
-		border-left: 10px solid;
-		border-right: 10px solid;
-	}
-	h2 {
+	&__inner {
 		color: #FFF;
+		font-size: 12px;
+		background: $primary-color;
+	}
+	&__item {
+		padding: 35px 35px 0;
+		a {
+			color: #fff;
+		}
+	}
+	&__title {
+		color: #fff;
 	}
 }
-.fade {
-	color: #F1B09B;
+.ba-tweet {
+	a,
+	span {
+		color: #F1B09B;
+	}
+	&__follow {
+		a {
+			color: #F1B09B;
+		}
+	}
 }
 .ba-social {
+	margin-top: 15px;
 	a {
 		display: inline-block;
 		width: 30px;
 		height: 31px;
 		background-image: url(../img/social-icons.png);
 	}
-
+	&__fb {
+		background-position: 0 0;
+	}
+	&__tw {
+		background-position: -35px 0;
+	}
+	&__email {
+		background-position: -70px 0;
+	}
+	&__rss {
+		background-position: -105px 0;
+	}
+	&__vimeo {
+		background-position: -140px 0;
+	}
 }
+// end ba-footer
